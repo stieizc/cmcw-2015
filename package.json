@@ -1,0 +1,24 @@
+{
+  "name": "cloud-mobile-computing-workshop-web",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel": "",
+    "babel-tape-runner": "",
+    "babelify": "",
+    "browser-sync": "",
+    "browserify": "",
+    "gulp": "",
+    "gulp-jade": "",
+    "gulp-sourcemaps": "",
+    "gulp-util": "",
+    "jade": "",
+    "require-dir": "",
+    "tape": "",
+    "vinyl-buffer": "",
+    "vinyl-source-stream": "",
+    "watchify": ""
+  }
+}
