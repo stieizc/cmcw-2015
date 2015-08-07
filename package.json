@@ -7,6 +7,7 @@
     "babel": "",
     "babel-tape-runner": "",
     "babelify": "",
+    "bower": "^1.4.1",
     "browser-sync": "",
     "browserify": "",
     "gulp": "",
