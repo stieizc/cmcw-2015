@@ -1,5 +1,7 @@
 {
   "libs": [
-    "browser"
+    "browser",
+    "ecma5",
+    "ecma6"
   ]
 }
