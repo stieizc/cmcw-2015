@@ -6,4 +6,34 @@ body
   background-color #F8F8F8
 
 nav
-  position: fixed;
+  position fixed
+  font-size 1.5em
+  & ul
+    list-style-type none
+    & li:not(:first-child)
+      padding-top 10px
+  & a
+    color #298CCA
+    text-decoration none
+    &:visited
+      text-decoration none
+
+section
+  & h2
+    color #414141
+  & p,table,ul,ol
+    font-size 1.2em
+    color #444
+  &:first-child
+    padding-top 4px
+  &:not(:last-child):after
+    content ''
+    display block
+    border 1px solid #E8E8E8
+    margin 10px 0
+
+#main
+  margin 120px auto 0
+  padding 30px 60px 0 0
+  width 1200px
+  background-color #FFF
