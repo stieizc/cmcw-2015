@@ -6,15 +6,20 @@ html(lang='en')
     link(rel='stylesheet',href='main.css')
   body
     .pure-g
-      nav.pure-u-1-6
-        ul
-          li Home
-          li Program
-          li Committee
-          li Venue
+      .pure-u-1-6
+        nav
+          ul
+            li
+              a(href='#Home') Home
+            li
+              a(href='#Program') Program
+            li
+              a(href='#Committee') Committee
+            li
+              a(href='#Venue') Venue
 
       .pure-u-5-6
-        h1 Home
+        h1#Home Home
 
         h2 Helsinki-HKUST-Tsinghua Workshop on Cloud and Mobile Computing
 
@@ -22,7 +27,7 @@ html(lang='en')
 
         p The 2st Helsinki-HKUST-Tsinghua workshop on cloud and mobile computing is a three-day workshop jointly organized by the University of Helsinki, Hong Kong University of Science and Technology, and Tsinghua University. The workshop is intended to bring together professors, researchers and students to share ideas, experience and implementations related to cloud and mobile computing, including SDN, augmented reality (AR), urban computing, big data analysis, mobile offloading and 5G networks.
 
-        h1 Program
+        h1#Program Program
 
         table
           caption Program
@@ -35,7 +40,7 @@ html(lang='en')
               th(scope='row') 12:30
               td Today is a good day!
 
-        h1 Committee
+        h1#Committee Committee
 
         h2 General Chairs:
         ul
@@ -63,7 +68,7 @@ html(lang='en')
         ul
           li Kai Zhao - University of Helsinki
 
-        h1 Venue
+        h1#Venue Venue
         h2 Airport transportation, bus taxi route to university:
         ol
           li By the Airport Express (AE). This service is a regularly recommended approach for visitors arriving into Hong Kong. You can find a route using MTR (public subway transportation) map (attached). The nearest MTR stations to HKUST are Hang Hau (to the south of HKUST, exit B1) and Choi Hung (to the west of HKUST, exit C1). You can then take mini-buses (11,11M or 11S, all having signs showing "HKUST" as the destination) from these MTR stations. The bus ride takes about 10-15 minutes.
