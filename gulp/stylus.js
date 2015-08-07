@@ -9,7 +9,9 @@ gulp.task('stylus', () => {
       loadMaps: true,
       debug: true
     }))
-    .pipe(stylus())
+    .pipe(stylus({
+      'include css': true,
+    }))
     .on('error', gutil.log.bind(gutil, 'Stylus Error'))
     .pipe(sourcemaps.write('./sourcemaps/'))
     .pipe(gulp.dest('./dist/'));
