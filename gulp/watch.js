@@ -1,3 +1,3 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
 
-gulp.task('watch', ['watch-jade']);
+gulp.task('watch', ['watch-jade', 'watch-stylus']);

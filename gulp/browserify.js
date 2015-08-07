@@ -1,20 +1,20 @@
-var gulp       = require('gulp');
-var gutil     = require('gulp-util');
-var sourcemaps = require('gulp-sourcemaps');
-var browserify = require('browserify');
-var watchify   = require('watchify');
-var source     = require('vinyl-source-stream');
-var buffer     = require('vinyl-buffer');
+const gulp       = require('gulp');
+const gutil     = require('gulp-util');
+const sourcemaps = require('gulp-sourcemaps');
+const browserify = require('browserify');
+const watchify   = require('watchify');
+const source     = require('vinyl-source-stream');
+const buffer     = require('vinyl-buffer');
 
 function genBundler(watch=false) {
-  var args = {
+  const args = {
     entries: ['./src/scripts/main.js'],
     debug: true,
     transform: ['babelify'],
   };
   if (watch)
     for (var k in watchify.args) args[k] = watchify.args[k];
-  var bundler = browserify(args);
+  const bundler = browserify(args);
   if (watch) return watchify(bundler);
   else return bundler;
 }
@@ -33,13 +33,11 @@ function rebundle(bundler) {
     .pipe(gulp.dest('./dist/'));
 }
 
-gulp.task('browserify', () => {
-  var bundler = genBundler();
-  return rebundle(bundler);
-});
+gulp.task('browserify', () =>
+  rebundle(genBundler()));
 
 gulp.task('watchify', () => {
-  var bundler = genBundler(true);
+  const bundler = genBundler(true);
   bundler.on('update', () => rebundle(bundler));
   return rebundle(bundler);
 });

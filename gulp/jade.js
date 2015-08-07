@@ -1,6 +1,6 @@
-var gulp  = require('gulp');
-var gutil = require('gulp-util');
-var jade  = require('gulp-jade');
+const gulp  = require('gulp');
+const gutil = require('gulp-util');
+const jade  = require('gulp-jade');
 
 gulp.task('jade', () => {
   gulp.src('./src/index.jade')
