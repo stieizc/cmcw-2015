@@ -1,17 +1,31 @@
 @require '../../bower_components/pure/base-min.css'
 @require '../../bower_components/pure/grids-min.css'
 
+
+// General settings
+// Well, not that general
+
 body
   font 12px Helvetica, Arial, sans-serif
+  // Gray color around #main makes it easier for me to focus
+  // Borrowed from last year's page
   background-color #F8F8F8
 
+ul
+  // Remove dots from nav & professors list
+  list-style-type none
+
+ol
+  // This is for removing indent of lists of transportation methods
+  list-style-position inside
+  padding 0
+
 nav
-  position fixed
   font-size 1.5em
-  & ul
-    list-style-type none
-    & li:not(:first-child)
-      padding-top 10px
+  // Larger gap between links
+  & ul li:not(:first-child)
+    padding-top 10px
+  // I like the style of links on last year's page
   & a
     color #298CCA
     text-decoration none
@@ -19,13 +33,17 @@ nav
       text-decoration none
 
 section
+  // Gray color is good.
   & h2
     color #414141
+  // Larger font for texts
   & p,table,ul,ol
     font-size 1.2em
     color #444
+  // To align with nav when user first open the page
   &:first-child
     padding-top 4px
+  // Seperators between sections
   &:not(:last-child):after
     content ''
     display block
@@ -33,6 +51,8 @@ section
     margin 10px 0
 
 #main
+  // Large margins and paddings makes it easier for me to focus
+  // Borrowed from last year's page
   margin 120px auto 0
   padding 30px 60px 0 0
   width 1200px
