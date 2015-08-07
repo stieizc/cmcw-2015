@@ -2,8 +2,7 @@
   "name": "cloud-mobile-computing-workshop-web",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "",
     "babel-tape-runner": "",
@@ -13,6 +12,7 @@
     "gulp": "",
     "gulp-jade": "",
     "gulp-sourcemaps": "",
+    "gulp-stylus": "^2.0.6",
     "gulp-util": "",
     "jade": "",
     "require-dir": "",
