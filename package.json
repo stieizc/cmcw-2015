@@ -2,7 +2,9 @@
   "name": "cloud-mobile-computing-workshop-web",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "raf": "^3.1.0"
+  },
   "devDependencies": {
     "babel": "",
     "babel-tape-runner": "",
