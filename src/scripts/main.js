@@ -4,13 +4,13 @@ const topFixer = require('./top-fixer');
 
 window.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementsByTagName('nav')[0];
-  const lis = document.getElementsByTagName('ul')[0].childNodes;
+  const links = nav.childNodes;
 
   onScroll(topFixer(nav));
   
-  var i = lis.length;
+  var i = links.length;
   while(i--) {
-    const a = lis[i].childNodes[0];
+    const a = links[i];
     const target = document.getElementById(
       a.getAttribute('href').slice(1));
     a.addEventListener('click', (e) => {

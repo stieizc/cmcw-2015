@@ -3,7 +3,7 @@ const utils = require('./utils');
 function topFixer(element) {
   // Returns a top half for onScroll
   // Dirty hack for smooth sticky positioning for nav in a div
-  const posY = utils.posY(element.parentNode);
+  const posY = utils.posY(element);
   var onTop = false;
 
   function TF() {

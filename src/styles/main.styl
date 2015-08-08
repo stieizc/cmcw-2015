@@ -1,5 +1,3 @@
-@require '../../bower_components/pure/base-min.css'
-@require '../../bower_components/pure/grids-min.css'
 @require 'mixins'
 
 
@@ -22,12 +20,15 @@ ol
   padding 0
 
 nav
+  padding 10px 0
   font-size 1.5em
+  width inherit
   // Larger gap between links
-  & ul li:not(:first-child)
-    padding-top 10px
-  // I like the style of links on last year's page
+  opacity 1
+  background-color #FFF
   & a
+    display inline-block
+    padding-right 20px
     color #298CCA
     text-decoration none
     &:visited
@@ -38,16 +39,12 @@ nav
 
 section
   // Gray color is good.
-  margin-right 60px
   & h2
     color #414141
   // Larger font for texts
   & p,table,ul,ol
     font-size 1.3em
     color #444
-  // To align with nav when user first open the page
-  &:first-child
-    padding-top 4px
   // Seperators between sections
   &:not(:last-child):after
     content ''
@@ -69,6 +66,8 @@ section
     line-height 80%
 
 #main
-  top-level-containers()
+  top-level-containers(60px)
   padding-up 30px
   background-color #FFF
+  & > section h2
+    margin-top 0
