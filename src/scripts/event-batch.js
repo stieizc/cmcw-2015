@@ -1,7 +1,7 @@
-function EventFrame(element, event, fm, alwaysTF=false) {
+function Batch(element, event, onRender, alwaysTF=false) {
   /*
    * A wrapper for event handlers on `event` of `element` that make use of requestAnimationFrame
-   * managed by `fm`.
+   * managed by `onRender`.
    * To reading and writing properties in turns that would cause many unnecessary layouts
    * these properties need to be read in batch, then write in batch. 
    * Thus handlers are split into top halves and bottom havles. Top halves read these properties
@@ -12,7 +12,7 @@ function EventFrame(element, event, fm, alwaysTF=false) {
    *
    * EventFrame is used for registering top halves for event on elment. When an event is triggered,
    * all TFs are called with the event object, and return BFs for calling in the next animation frame.
-   * TFs will return nothing if there's nothing to do. These BFs are passed to the FrameManager `fm`.
+   * TFs will return nothing if there's nothing to do. These BFs are deferred to next render.
    *
    * BFs are never called when a previous rendering is still pending. For TFs, if `alwaysTF` is false
    * (default), TFs will also not be envoked with a pending render, which means that TFs cannot assume
@@ -23,11 +23,11 @@ function EventFrame(element, event, fm, alwaysTF=false) {
   */
   var TFs = [];
 
-  function add(TF) {
+  function batch(TF) {
     TFs.push(TF);
   }
 
-  function remove(TF) {
+  batch.remove = (TF) => {
     var i = TFs.length;
     while(i--) {
       if (TFs[i] === TF) {
@@ -35,13 +35,17 @@ function EventFrame(element, event, fm, alwaysTF=false) {
         break;
       }
     }
-  }
+  };
+
+  batch.unmount = () => {
+    element.removeEventListener(event, cb);
+  };
 
   // Maybe array allocation here should be avoided and clearing should be used
   // instead to reduce the burden on gc?
   function cb(e) {
     var i, BF;
-    if (fm.pending()) {
+    if (onRender.pending()) {
       if (alwaysTF) {
         // Avoid allocating memories
         i = TFs.length;
@@ -52,18 +56,14 @@ function EventFrame(element, event, fm, alwaysTF=false) {
     i = TFs.length;
     while(i--) {
       BF = TFs[i](e);
-      if (BF) fm.add(BF);
+      if (BF) onRender(BF);
     }
-    fm.flush();
-  }
-
-  function unmount() {
-    element.removeEventListener(event, cb);
+    onRender.flush();
   }
 
   element.addEventListener(event, cb);
 
-  return {add, remove, unmount};
+  return batch;
 }
 
-module.exports = EventFrame;
+module.exports = Batch;

@@ -1,8 +1,8 @@
 const raf = require('raf');
 
-function FrameManager() {
+function OnRender() {
   /*
-   * Accept bottom halves that will do rendering, and call them on next frame.
+   * Batch bottom halves that will do rendering, and call them on next frame.
    *
    * BFs are cleared on each frame.
    * BFs are envoked with the timestamp passed to requestAnimationFrame's callback.
@@ -16,17 +16,16 @@ function FrameManager() {
    */
   var BFs = [];
 
-  function pending() {
-    return BFs.length > 0;
-  }
-
-  function add(BF) {
+  function onRender(BF) {
     BFs.push(BF);
   }
 
-  function flush() {
+  onRender.pending = () =>
+    BFs.length > 0;
+
+  onRender.flush = () => {
     if (BFs.length > 0) raf(cb);
-  }
+  };
 
   function cb(t) {
     var i = BFs.length;
@@ -34,7 +33,7 @@ function FrameManager() {
     BFs = [];
   }
 
-  return {pending, add, flush};
+  return onRender;
 }
 
-module.exports = FrameManager;
+module.exports = OnRender;
