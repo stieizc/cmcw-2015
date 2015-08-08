@@ -1,5 +1,6 @@
 @require '../../bower_components/pure/base-min.css'
 @require '../../bower_components/pure/grids-min.css'
+@require 'mixins'
 
 
 // General settings
@@ -31,14 +32,18 @@ nav
     text-decoration none
     &:visited
       text-decoration none
+  &.fixed
+    top 0
+    position fixed
 
 section
   // Gray color is good.
+  margin-right 60px
   & h2
     color #414141
   // Larger font for texts
   & p,table,ul,ol
-    font-size 1.2em
+    font-size 1.3em
     color #444
   // To align with nav when user first open the page
   &:first-child
@@ -51,18 +56,19 @@ section
     margin 10px 0
 
 #home
+  top-level-containers()
   content ''
   display block
-  height 120px
+  height 130px
   background-color #E8E8E8
-
-#main, #home
-  // Large margins and paddings makes it easier for me to focus
-  // Borrowed from last year's page
-  margin 0 auto
-  width 1200px
-  padding-right 60px
+  & h1, h2, h3
+    text-align center
+  & h1
+    padding-top 20px
+  & h2, h3
+    line-height 80%
 
 #main
+  top-level-containers()
   padding-up 30px
   background-color #FFF
