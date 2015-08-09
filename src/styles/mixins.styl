@@ -5,7 +5,8 @@ pad-lr-containers(total, pad-lr = 0)
   margin-right auto
   padding-left pad-lr
   padding-right pad-lr
-  width total - pad-lr * 2
+  box-sizing border-box
+  width total
   @media (max-width: total)
     width auto
     padding-left (pad-lr/total * 100)%
@@ -17,7 +18,8 @@ pad-lr-sticky-containers(total, pad-lr = 0)
   position absolute
   // Large margins and paddings makes it easier for me to focus
   // Borrowed from last year's page
-  width total - pad-lr * 2
+  box-sizing border-box
+  width total
   left 50%
   margin-left (-(total/2)px)
   margin-right auto
@@ -29,7 +31,6 @@ pad-lr-sticky-containers(total, pad-lr = 0)
   @media (max-width: total)
     left unset
     margin-left unset
-    box-sizing border-box
     width 100%
     padding-left (pad-lr/total * 100)%
     padding-right (pad-lr/total * 100)%
