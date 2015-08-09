@@ -19,6 +19,7 @@ See [package.json](package.json)
 
     ```shell
     # Example npm & bower setup.
+    ./scripts/setup-develop.sh
     node install
     bower install
     ```
