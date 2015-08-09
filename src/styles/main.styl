@@ -2,15 +2,18 @@
 @require 'mixins'
 @require 'consts'
 
-
 // General settings
 // Well, not that general
+
+html
+  height 100%
 
 body
   font 12px Helvetica, Arial, sans-serif
   // Gray color around #main makes it easier for me to focus
   // Borrowed from last year's page
   background-color body-bg-gray
+  height 100%
 
 ul
   // Remove dots from nav & professors list
@@ -20,21 +23,6 @@ ol
   // This is for removing indent of lists of transportation methods
   list-style-position inside
   padding 0
-
-section
-  // Gray color is good.
-  & h2
-    color section-heading-gray
-  // Larger font for texts
-  & p,table,ul,ol
-    font-size 1.3em
-    color section-text-gray
-  // Seperators between sections
-  &:not(:last-child):after
-    content ''
-    display block
-    border 1px solid deeper-bg-gray
-    margin 10px 0
 
 #header
   pad-lr-containers(max-content-width)
@@ -68,7 +56,22 @@ nav
     &.current
       background-color white
 
-#main
+section
   pad-lr-containers(max-content-width, 60px)
   background-color white
+  min-height 100%
   padding-top 40px
+  // Gray color is good.
+  & h2
+    color section-heading-gray
+  // Larger font for texts
+  & p,table,ul,ol
+    font-size 1.3em
+    color section-text-gray
+  // Seperators between sections
+
+table
+  box-sizing content-box
+  margin-top 15px
+  caption
+    display none
