@@ -1,11 +1,11 @@
-const gulp        = require('gulp');
-const bs = require('browser-sync').create();
+const gulp = require('gulp'),
+      bs = require('browser-sync').create();
 
 gulp.task('browser-sync', () => {
   bs.init({
-    files: ['./dist/**/*'],
+    files: ['./instance/**/*'],
     server: {
-      baseDir: './dist/',
+      baseDir: './instance/',
     },
   });
 });

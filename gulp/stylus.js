@@ -1,22 +1,32 @@
-const gulp = require('gulp');
-const gutil = require('gulp-util');
-const stylus = require('gulp-stylus');
-const sourcemaps = require('gulp-sourcemaps');
+const gulp = require('gulp'),
+      gutil = require('gulp-util'),
+      stylus = require('gulp-stylus'),
+      sourcemaps = require('gulp-sourcemaps'),
+      config = require('./config');
 
-gulp.task('stylus', () => {
-  gulp.src('./src/styles/main.styl')
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-      debug: true
-    }))
-    .pipe(stylus({
+function st(p) {
+  return p.pipe(stylus({
       'include css': true,
     }))
-    .on('error', gutil.log.bind(gutil, 'Stylus Error'))
-    .pipe(sourcemaps.write('./sourcemaps/'))
-    .pipe(gulp.dest('./dist/'));
-});
+    .on('error', gutil.log.bind(gutil, 'Stylus Error'));
+}
 
-gulp.task('watch-stylus', ['stylus'], () => {
-  return gulp.watch('./src/styles/*.styl', ['stylus']);
+function doStylus(watch=false) {
+  return () => {
+    var p = gulp.src(config.entry.stylus);
+    p = watch ?
+      st(p.pipe(sourcemaps.init({
+        loadMaps: true,
+        debug: true
+      }))).pipe(sourcemaps.write())
+    : st(p);
+    p.pipe(gulp.dest(config.out(watch)));
+  };
+}
+
+gulp.task('stylus', doStylus());
+
+gulp.task('watch-stylus', () => {
+  doStylus(true)();
+  return gulp.watch('./src/styles/*.styl', doStylus(true));
 });
