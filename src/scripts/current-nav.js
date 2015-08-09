@@ -13,7 +13,7 @@ function currentNav(nav) {
 
   function TF() {
     var i = posYs.length,
-        pageY = window.pageYOffset + nav.offsetHeight;
+        pageY = window.pageYOffset;
     while(i--) {
       if (utils.isOverTop(posYs[i], pageY)) break;
     }
@@ -23,6 +23,7 @@ function currentNav(nav) {
 
   function changeCurrent(i) {
     return () => {
+      if (top > i) window.scroll(0, posYs[i]); // Help the user to scroll up
       links[top].classList.remove('current');
       links[i].classList.add('current');
       top = i;
