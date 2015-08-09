@@ -1,7 +1,10 @@
 {
-  "name": "cloud-mobile-computing-workshop-web",
-  "version": "0.0.0",
+  "name": "cloud-mobile-computing-workshop-website",
+  "description": "Website for Cloud Mobile Computing Workshop 2015",
   "private": true,
+  "license": "MIT",
+  "version": "0.0.1",
+  "author": "Wang Wenxin <stieizc.33@gmail.com>",
   "dependencies": {
     "raf": "^3.1.0"
   },

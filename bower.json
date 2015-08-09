@@ -1,18 +1,7 @@
 {
-  "name": "cloud-mobile-computing-workshop-web",
-  "version": "0.0.0",
-  "authors": [
-    "Charlie Brown <stieizc@gmail.com>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "name": "cloud-mobile-computing-workshop-website",
   "dependencies": {
     "normalize.css": "~3.0.3"
-  }
+  },
+  "private": true
 }
