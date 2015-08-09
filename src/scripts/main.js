@@ -1,20 +1,10 @@
-const onRender = require('./on-render')();
-const onScroll = require('./event-batch')(window, 'scroll', onRender);
-const topFixer = require('./top-fixer');
+const onRender = require('./on-render')(),
+      onScroll = require('./event-batch')(window, 'scroll', onRender),
+      topFixer = require('./top-fixer'),
+      currentNav = require('./current-nav');
 
 window.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementsByTagName('nav')[0];
-  const links = nav.childNodes;
-
   onScroll(topFixer(nav));
-  
-  var i = links.length;
-  while(i--) {
-    const a = links[i];
-    const target = document.getElementById(
-      a.getAttribute('href').slice(1));
-    a.addEventListener('click', (e) => {
-      console.log(e);
-    });
-  }
+  onScroll(currentNav(nav));
 });
