@@ -2,32 +2,59 @@ const utils = require('./utils');
 
 function currentNav(nav) {
   const links = nav.childNodes;
-  const posYs = [];
-  var top = 0;
-
-  var i = links.length;
+  const targets = [];
+  var top = 0,
+      i = links.length,
+      pageY;
   while(i--) {
-    posYs[i] = (utils.posY(document.getElementById(
-      links[i].getAttribute('href').slice(1))));
+    targets[i] = document.getElementById(
+      links[i].getAttribute('href').slice(1));
   }
 
   function TF() {
-    var i = posYs.length,
-        pageY = window.pageYOffset;
+    var _pageY = window.pageYOffset, ret, posY;
+    i = targets.length;
     while(i--) {
-      if (utils.isOverTop(posYs[i], pageY)) break;
+      posY = utils.posY(targets[i]);
+      if (utils.isOverTop(posY, _pageY)) {
+        if (i === -1) i = 0;
+        if (top !== i) ret = changeCurrent;
+        else if (pageY < _pageY) {
+          // Need to check if user is scrolling down
+          var lastChild = targets[i].lastChild;
+          if (utils.isOverTop(utils.posY(lastChild) +
+                              lastChild.offsetHeight, _pageY) &&
+              ++i < targets.length) {
+            ret = goDown; 
+          }
+        }
+        break; 
+      }
     }
-    if (i === -1) i = 0;
-    if (top !== i) return changeCurrent(i);
+    pageY = _pageY;
+    if (ret) return ret;
   }
 
-  function changeCurrent(i) {
-    return () => {
-      if (top > i) window.scroll(0, posYs[i]); // Help the user to scroll up
-      links[top].classList.remove('current');
-      links[i].classList.add('current');
-      top = i;
-    };
+  function changeCurrent() {
+    // top and i can be used to check that user is scrolling up
+    if (top > i) goUp(); // Help the user to scroll up
+    links[top].classList.remove('current');
+    links[i].classList.add('current');
+    top = i;
+  }
+
+  function goUp() {
+    // Since BF is performed later, check again if we need to scroll
+    var posY = utils.posY(targets[i]);
+    if (window.pageYOffset > posY)
+      window.scroll(0, posY);
+  }
+
+  function goDown() {
+    // Since BF is performed later, check again if we need to scroll
+    var posY = utils.posY(targets[i]);
+    if (window.pageYOffset < posY)
+      window.scroll(0, posY);
   }
 
   return TF;
