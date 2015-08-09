@@ -36,7 +36,7 @@ section
     margin 10px 0
 
 #header
-  top-level-containers()
+  pad-lr-containers(max-content-width)
   background-color deeper-bg-gray
   & h1, h2, h3
     text-align center
@@ -49,19 +49,12 @@ section
     padding-bottom 15px
 
 nav
+  pad-lr-sticky-containers(max-content-width, 60px)
   font-size 1.5em
-
-  width inherit
-
-  background-color inherit
+  background-color deeper-bg-gray
   opacity 1
-  // I found that absolute position + padding-top in the next container
-  // is best for sticky nav
-  position absolute
   // Larger gap between links
   & a
-    &:first-child
-      margin-left 60px
     display inline-block
     padding 7px 15px
     color a-blue
@@ -70,12 +63,8 @@ nav
       text-decoration none
     &.current
       background-color white
-  &.fixed
-    top 0
-    position fixed
 
 #main
-  top-level-containers(60px)
+  pad-lr-containers(max-content-width, 60px)
   background-color white
-  & > section
-    padding-top 30px
+  padding-top 40px
