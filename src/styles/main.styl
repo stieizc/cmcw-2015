@@ -1,4 +1,5 @@
 @require 'mixins'
+@require 'consts'
 
 
 // General settings
@@ -8,7 +9,7 @@ body
   font 12px Helvetica, Arial, sans-serif
   // Gray color around #main makes it easier for me to focus
   // Borrowed from last year's page
-  background-color #F8F8F8
+  background-color body-bg-gray
 
 ul
   // Remove dots from nav & professors list
@@ -19,55 +20,62 @@ ol
   list-style-position inside
   padding 0
 
-nav
-  padding 10px 0
-  font-size 1.5em
-  width inherit
-  // Larger gap between links
-  opacity 1
-  background-color #FFF
-  & a
-    display inline-block
-    padding-right 20px
-    color #298CCA
-    text-decoration none
-    &:visited
-      text-decoration none
-  &.fixed
-    top 0
-    position fixed
-
 section
   // Gray color is good.
   & h2
-    color #414141
+    color section-heading-gray
   // Larger font for texts
   & p,table,ul,ol
     font-size 1.3em
-    color #444
+    color section-text-gray
   // Seperators between sections
   &:not(:last-child):after
     content ''
     display block
-    border 1px solid #E8E8E8
+    border 1px solid deeper-bg-gray
     margin 10px 0
 
-#home
+#heading
   top-level-containers()
-  content ''
-  display block
-  height 130px
-  background-color #E8E8E8
+  background-color deeper-bg-gray
   & h1, h2, h3
     text-align center
   & h1
     padding-top 20px
   & h2, h3
     line-height 80%
+  & h3
+    margin-bottom 0
+    padding-bottom 15px
+
+nav
+  font-size 1.5em
+
+  width inherit
+
+  background-color inherit
+  opacity 1
+  // I found that absolute position + padding-top in the next container
+  // is best for sticky nav
+  position absolute
+  // Larger gap between links
+  & a
+    &:first-child
+      margin-left 60px
+    display inline-block
+    padding 5px 15px
+    color a-blue
+    text-decoration none
+    &:visited
+      text-decoration none
+    &.current
+      background-color white
+  &.fixed
+    top 0
+    position fixed
 
 #main
   top-level-containers(60px)
-  padding-up 30px
-  background-color #FFF
-  & > section h2
-    margin-top 0
+  background-color white
+  & > section
+    padding-top 30px
