@@ -17,18 +17,19 @@ pad-lr-sticky-containers(total, pad-lr = 0)
   position absolute
   // Large margins and paddings makes it easier for me to focus
   // Borrowed from last year's page
+  width total - pad-lr * 2
+  left 50%
   margin-left (-(total/2)px)
   margin-right auto
-  left 50%
   padding-left pad-lr
   padding-right pad-lr
-  width total - pad-lr * 2
   &.fixed
     top 0
     position fixed
   @media (max-width: total)
     left unset
     margin-left unset
-    width auto
+    box-sizing border-box
+    width 100%
     padding-left (pad-lr/total * 100)%
     padding-right (pad-lr/total * 100)%
