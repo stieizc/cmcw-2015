@@ -515,7 +515,11 @@ nav > a.current {
   background-color: #fff;
 }
 @media (max-width: 460px) {
+  nav {
+    padding-top: unset;
+  }
   nav > a.current {
+    background-color: unset;
     display: block;
     text-align: center;
   }

@@ -58,11 +58,14 @@ nav
       background-color white
 
 @media (max-width: 460px)
-  nav > a.current
-    display block
-    text-align center
-  nav > a:not(.current)
-    display none
+  nav
+    padding-top unset
+    & > a.current
+      background-color unset
+      display block
+      text-align center
+    & > a:not(.current)
+      display none
 
 section
   pad-lr-containers(max-content-width, 60px)
