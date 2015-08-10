@@ -104,7 +104,7 @@ module.exports.cancel = function() {
 }).call(this);
 
 }).call(this,require('_process'))
-},{"_process":9}],3:[function(require,module,exports){
+},{"_process":10}],3:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -174,7 +174,7 @@ function currentNav(nav) {
 
 module.exports = currentNav;
 
-},{"./utils":8}],4:[function(require,module,exports){
+},{"./utils":9}],4:[function(require,module,exports){
 "use strict";
 
 function Batch(element, event, onRender) {
@@ -255,15 +255,50 @@ module.exports = Batch;
 var onRender = require('./on-render')(),
     onWindowScroll = require('./event-batch')(window, 'scroll', onRender),
     topFixer = require('./top-fixer'),
-    currentNav = require('./current-nav');
+    currentNav = require('./current-nav'),
+    setToggleMap = require('./map');
 
 window.addEventListener('DOMContentLoaded', function () {
-  var nav = document.getElementsByTagName('nav')[0];
-  onWindowScroll(topFixer(nav));
-  onWindowScroll(currentNav(nav));
+      var nav = document.getElementsByTagName('nav')[0],
+          mapButton = document.getElementById('venue').getElementsByTagName('button')[0],
+          mapWrapper = document.getElementById('map');
+      onWindowScroll(topFixer(nav));
+      onWindowScroll(currentNav(nav));
+      setToggleMap(mapButton, mapWrapper);
 });
 
-},{"./current-nav":3,"./event-batch":4,"./on-render":6,"./top-fixer":7}],6:[function(require,module,exports){
+},{"./current-nav":3,"./event-batch":4,"./map":6,"./on-render":7,"./top-fixer":8}],6:[function(require,module,exports){
+'use strict';
+
+var mapURL = 'https://www.google.com/maps/d/embed?mid=zC1q8FnOVhaI.ksz-yBnQUbOk';
+
+function setToggleMap(button, mapWrapper) {
+  button.addEventListener('click', toggle(mapWrapper));
+}
+
+function toggle(mapWrapper) {
+  var show = false;
+  var iframe = mapWrapper.getElementsByTagName('iframe')[0],
+      section = mapWrapper.parentNode;
+
+  return function () {
+    show = !show;
+    if (show) {
+      if (iframe.src !== mapURL) {
+        iframe.src = mapURL;
+        iframe.width = 0.8 * section.scrollWidth;
+        iframe.height = 0.6 * section.scrollHeight;
+      }
+      mapWrapper.style.display = 'block';
+    } else {
+      mapWrapper.style.display = 'none';
+    }
+  };
+}
+
+module.exports = setToggleMap;
+
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var raf = require('raf');
@@ -307,7 +342,7 @@ function OnRender() {
 
 module.exports = OnRender;
 
-},{"raf":1}],7:[function(require,module,exports){
+},{"raf":1}],8:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -342,7 +377,7 @@ function topFixer(element) {
 
 module.exports = topFixer;
 
-},{"./utils":8}],8:[function(require,module,exports){
+},{"./utils":9}],9:[function(require,module,exports){
 "use strict";
 
 function posY(element) {
@@ -360,7 +395,7 @@ function isOverTop(posY, pageY) {
 
 module.exports = { posY: posY, isOverTop: isOverTop };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
