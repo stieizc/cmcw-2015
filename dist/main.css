@@ -519,8 +519,7 @@ nav > a.current {
     padding-top: unset;
   }
   nav > a.current {
-    background-color: unset;
-    display: block;
+    display: inline-block;
     text-align: center;
   }
   nav > a:not(.current) {
