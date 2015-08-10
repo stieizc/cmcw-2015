@@ -128,13 +128,18 @@ function currentNav(nav) {
       posY = utils.posY(targets[i]);
       if (utils.isOverTop(posY, _pageY)) {
         if (i === -1) i = 0;
-        if (top !== i) ret = changeCurrent;else if (pageY < _pageY) {
+        if (top !== i) ret = changeCurrent;
+        /* Scroll helpers may cause flipping
+        else if (pageY < _pageY) {
           // Need to check if user is scrolling down
           var lastChild = targets[i].lastChild;
-          if (utils.isOverTop(utils.posY(lastChild) + lastChild.offsetHeight, _pageY) && ++i < targets.length) {
-            ret = goDown;
+          if (utils.isOverTop(utils.posY(lastChild) +
+                              lastChild.offsetHeight, _pageY) &&
+              ++i < targets.length) {
+            ret = goDown; 
           }
         }
+        */
         break;
       }
     }
@@ -144,7 +149,11 @@ function currentNav(nav) {
 
   function changeCurrent() {
     // top and i can be used to check that user is scrolling up
-    if (top > i) goUp(); // Help the user to scroll up
+
+    /* Scroll helpers may cause flipping
+    // if (top > i) goUp(); // Help the user to scroll up
+    */
+
     links[top].classList.remove('current');
     links[i].classList.add('current');
     top = i;
