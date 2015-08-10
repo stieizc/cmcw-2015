@@ -343,11 +343,11 @@ function topFixer(element) {
 module.exports = topFixer;
 
 },{"./utils":8}],8:[function(require,module,exports){
-'use strict';
+"use strict";
 
 function posY(element) {
   var y = 0;
-  while (!!element && element.tagName.toLowerCase() !== 'body') {
+  while (!!element) {
     y += element.offsetTop;
     element = element.offsetParent;
   }
