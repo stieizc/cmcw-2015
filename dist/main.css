@@ -588,3 +588,6 @@ table {
 table caption {
   display: none;
 }
+#program ul {
+  list-style-type: square;
+}
