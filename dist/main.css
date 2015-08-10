@@ -441,10 +441,6 @@ a:visited {
 ul {
   list-style-type: none;
 }
-ol {
-  list-style-position: inside;
-  padding: 0;
-}
 #header {
   margin-left: auto;
   margin-right: auto;
@@ -636,4 +632,11 @@ table caption {
 }
 #map iframe {
   margin: auto;
+}
+#venue > ol {
+  list-style-position: inside;
+  padding: 0;
+}
+#venue > ol > li {
+  margin: 10px 0;
 }

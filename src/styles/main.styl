@@ -25,11 +25,6 @@ ul
   // Remove dots from nav & professors list
   list-style-type none
 
-ol
-  // This is for removing indent of lists of transportation methods
-  list-style-position inside
-  padding 0
-
 #header
   pad-lr-containers(max-content-width)
   +query-min-width-height(header-overflow-width, header-fill-1-3-page-height)
@@ -120,3 +115,11 @@ table
   margin-top 15px
   & iframe
     margin auto
+
+#venue
+  & > ol
+    // This is for removing indent of lists of transportation methods
+    list-style-position inside
+    padding 0
+    & > li
+      margin 10px 0
