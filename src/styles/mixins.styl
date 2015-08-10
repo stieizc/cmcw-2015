@@ -3,6 +3,11 @@ inline-block()
   *display inline
   zoom 1
 
+pad-lr-containers-sm(total, pad-lr)
+  width auto
+  padding-left (pad-lr/total * 100)%
+  padding-right (pad-lr/total * 100)%
+
 pad-lr-containers(total, pad-lr = 0)
   // Large margins and paddings makes it easier for me to focus
   // Borrowed from last year's page
@@ -13,29 +18,46 @@ pad-lr-containers(total, pad-lr = 0)
   box-sizing border-box
   width total
   @media (max-width: total)
-    width auto
-    padding-left (pad-lr/total * 100)%
-    padding-right (pad-lr/total * 100)%
+    pad-lr-containers-sm(total, pad-lr)
+
+pad-lr-abs-containers(total, pad-lr)
+  // Large margins and paddings makes it easier for me to focus
+  // Borrowed from last year's page
+  box-sizing border-box
+  left 50%
+  margin-left (-(total/2)px)
+  margin-right auto
+
+pad-lr-abs-containers-sm(total, pad-lr)
+  pad-lr-containers-sm(total, pad-lr)
+  width 100%
+  left unset
+  margin-left unset
 
 pad-lr-sticky-containers(total, pad-lr = 0)
   // I found that absolute position + padding-top in the next container
   // is best for sticky nav
+  pad-lr-abs-containers(total, pad-lr)
   position absolute
-  // Large margins and paddings makes it easier for me to focus
-  // Borrowed from last year's page
-  box-sizing border-box
-  width total
-  left 50%
-  margin-left (-(total/2)px)
-  margin-right auto
-  padding-left pad-lr
-  padding-right pad-lr
   &.fixed
     top 0
     position fixed
   @media (max-width: total)
-    left unset
-    margin-left unset
-    width 100%
-    padding-left (pad-lr/total * 100)%
-    padding-right (pad-lr/total * 100)%
+    pad-lr-abs-containers-sm(total, pad-lr)
+
+pad-lr-fixed-containers(total, pad-lr = 0)
+  // Large margins and paddings makes it easier for me to focus
+  // Borrowed from last year's page
+  pad-lr-abs-containers(total, pad-lr)
+  top 0
+  position fixed
+  @media (max-width: total)
+    pad-lr-abs-containers-sm(total, pad-lr)
+
+query-max-width-height(w, h)
+  @media (max-width: w) and (max-height: h)
+    {block}
+
+query-min-width-height(w, h)
+  @media (min-width: w) and (min-height: h)
+    {block}

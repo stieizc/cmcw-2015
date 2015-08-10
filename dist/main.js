@@ -258,8 +258,9 @@ var onRender = require('./on-render')(),
     currentNav = require('./current-nav');
 
 window.addEventListener('DOMContentLoaded', function () {
-      var nav = document.getElementsByTagName('nav')[0];
-      onWindowScroll(currentNav(nav));
+  var nav = document.getElementsByTagName('nav')[0];
+  onWindowScroll(topFixer(nav));
+  onWindowScroll(currentNav(nav));
 });
 
 },{"./current-nav":3,"./event-batch":4,"./on-render":6,"./top-fixer":7}],6:[function(require,module,exports){

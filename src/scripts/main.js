@@ -5,5 +5,6 @@ const onRender = require('./on-render')(),
 
 window.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementsByTagName('nav')[0];
+  onWindowScroll(topFixer(nav));
   onWindowScroll(currentNav(nav));
 });
