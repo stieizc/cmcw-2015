@@ -57,6 +57,13 @@ nav
     &.current
       background-color white
 
+@media (max-width: 460px)
+  nav > a.current
+    display block
+    text-align center
+  nav > a:not(.current)
+    display none
+
 section
   pad-lr-containers(max-content-width, 60px)
   background-color white
@@ -78,7 +85,7 @@ section
   & > a > img
     width 210px
     box-sizing content-box
-    margin 20px
+    margin 20px 20px 0
     vertical-align top
     inline-block()
   &:after

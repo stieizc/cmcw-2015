@@ -514,6 +514,15 @@ nav > a:visited {
 nav > a.current {
   background-color: #fff;
 }
+@media (max-width: 460px) {
+  nav > a.current {
+    display: block;
+    text-align: center;
+  }
+  nav > a:not(.current) {
+    display: none;
+  }
+}
 section {
   margin-left: auto;
   margin-right: auto;
@@ -550,7 +559,7 @@ section ol {
 #logos > a > img {
   width: 210px;
   box-sizing: content-box;
-  margin: 20px;
+  margin: 20px 20px 0;
   vertical-align: top;
   display: inline-block;
   *display: inline;
