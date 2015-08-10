@@ -482,9 +482,10 @@ nav {
   margin-right: auto;
   padding-left: 60px;
   padding-right: 60px;
-  font-size: 1.5em;
+  font-size: 1.6em;
   background-color: #e8e8e8;
   opacity: 1;
+  padding-top: 20px;
 }
 nav.fixed {
   top: 0;
@@ -522,7 +523,7 @@ section {
   width: 1000px;
   background-color: #fff;
   min-height: 100%;
-  padding-top: 40px;
+  padding-top: 80px;
 }
 @media (max-width: 1000px) {
   section {
@@ -546,7 +547,7 @@ section ol {
   text-align: justify;
   background-color: #f1f1f1;
 }
-#logos img {
+#logos > a > img {
   width: 210px;
   box-sizing: content-box;
   margin: 20px;
