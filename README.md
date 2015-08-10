@@ -5,6 +5,8 @@
 * Setup the http server to statically serve files under some folder
 * Copy all files under dist/ to that folder 
 
+[Demo](http://cmcw2015.stieizc.info/)
+
 # Development
 
 ## Main Dependencies
