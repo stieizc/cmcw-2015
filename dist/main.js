@@ -121,14 +121,11 @@ function currentNav(nav) {
 
   function TF() {
     var _pageY = window.pageYOffset,
-        ret,
         posY;
     i = targets.length;
     while (i--) {
       posY = utils.posY(targets[i]);
       if (utils.isOverTop(posY, _pageY)) {
-        if (i === -1) i = 0;
-        if (top !== i) ret = changeCurrent;
         /* Scroll helpers may cause flipping
         else if (pageY < _pageY) {
           // Need to check if user is scrolling down
@@ -144,7 +141,8 @@ function currentNav(nav) {
       }
     }
     pageY = _pageY;
-    if (ret) return ret;
+    if (i === -1) i = 0;
+    if (top !== i) return changeCurrent;
   }
 
   function changeCurrent() {
