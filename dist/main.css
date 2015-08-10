@@ -446,19 +446,27 @@ ol {
   padding: 0;
 }
 #header {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
+  position: absolute;
   box-sizing: border-box;
   width: 1000px;
+  left: 50%;
+  margin-left: -500px;
+  margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
   background-color: #e8e8e8;
+}
+#header.fixed {
+  top: 0;
+  position: fixed;
 }
 @media (max-width: 1000px) {
   #header {
-    width: auto;
-    padding-left: 0%;
-    padding-right: 0%;
+    left: unset;
+    margin-left: unset;
+    width: 100%;
+    padding-left: 6%;
+    padding-right: 6%;
   }
 }
 #header > h1,
@@ -481,31 +489,9 @@ ol {
   padding-bottom: 15px;
 }
 nav {
-  position: absolute;
-  box-sizing: border-box;
-  width: 1000px;
-  left: 50%;
-  margin-left: -500px;
-  margin-right: auto;
-  padding-left: 60px;
-  padding-right: 60px;
   font-size: 1.6em;
   background-color: #e8e8e8;
   opacity: 1;
-  padding-top: 20px;
-}
-nav.fixed {
-  top: 0;
-  position: fixed;
-}
-@media (max-width: 1000px) {
-  nav {
-    left: unset;
-    margin-left: unset;
-    width: 100%;
-    padding-left: 6%;
-    padding-right: 6%;
-  }
 }
 nav > a {
   display: inline-block;
@@ -541,7 +527,7 @@ section {
   width: 1000px;
   background-color: #fff;
   min-height: 100%;
-  padding-top: 80px;
+  padding-top: 180px;
 }
 @media (max-width: 1000px) {
   section {
