@@ -9,6 +9,7 @@
     "raf": "^3.1.0"
   },
   "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
     "babel": "",
     "babel-tape-runner": "",
     "babelify": "",
@@ -17,6 +18,7 @@
     "browserify": "",
     "gulp": "",
     "gulp-jade": "",
+    "gulp-postcss": "^5.1.10",
     "gulp-sourcemaps": "",
     "gulp-stylus": "^2.0.6",
     "gulp-util": "",
