@@ -442,13 +442,14 @@ ul {
   list-style-type: none;
 }
 #header {
+  z-index: 1;
   margin-left: auto;
   margin-right: auto;
   padding-left: 0;
   padding-right: 0;
   box-sizing: border-box;
   width: 1000px;
-  background-color: #e8e8e8;
+  background-color: #e0e0e0;
 }
 @media (max-width: 1000px) {
   #header {
@@ -457,7 +458,7 @@ ul {
     padding-right: 0%;
   }
 }
-@media (min-width: 520px) and (min-height: 690px) {
+@media (min-width: 520px) and (min-height: 600px) {
   #header {
     box-sizing: border-box;
     left: 50%;
@@ -481,7 +482,7 @@ ul {
   margin-bottom: 0;
   padding-bottom: 15px;
 }
-@media (min-width: 520px) and (min-height: 690px) and (max-width: 1000px) {
+@media (min-width: 520px) and (min-height: 600px) and (max-width: 1000px) {
   #header {
     width: auto;
     padding-left: 0%;
@@ -499,7 +500,7 @@ nav {
   box-sizing: border-box;
   width: 1000px;
   font-size: 1.6em;
-  background-color: #e8e8e8;
+  background-color: #e0e0e0;
   opacity: 1;
 }
 @media (max-width: 1000px) {
@@ -509,7 +510,7 @@ nav {
     padding-right: 6%;
   }
 }
-@media (max-width: 520px), (max-height: 690px) {
+@media (max-width: 520px), (max-height: 600px) {
   nav {
     box-sizing: border-box;
     left: 50%;
@@ -535,7 +536,7 @@ nav > a:visited {
 nav > a.current {
   background-color: #fff;
 }
-@media (max-width: 520px) and (max-width: 1000px), (max-height: 690px) and (max-width: 1000px) {
+@media (max-width: 520px) and (max-width: 1000px), (max-height: 600px) and (max-width: 1000px) {
   nav {
     width: auto;
     padding-left: 6%;
@@ -575,7 +576,7 @@ section {
     padding-right: 6%;
   }
 }
-@media (min-width: 520px) and (min-height: 690px) {
+@media (min-width: 520px) and (min-height: 600px) {
   section {
     padding-top: 160px;
   }
@@ -621,6 +622,34 @@ table caption {
 }
 #program ul {
   list-style-type: square;
+}
+#program h2.date {
+  text-align: center;
+}
+#program table {
+  font-size: 1.5em;
+}
+#program table tr:nth-of-type(odd) {
+  background-color: #f0f0f0;
+}
+#program table tr:nth-of-type(even) {
+  background-color: #e8e8e8;
+}
+#program table td {
+  padding: 10px 10px;
+}
+#program table td:first-of-type {
+  white-space: nowrap;
+}
+#program table td > span {
+  display: block;
+}
+#program table td > span.title {
+  font-weight: 600;
+}
+#program table td[colspan="2"] {
+  font-size: 1.1em;
+  background-color: #e0e0e0;
 }
 #map {
   display: none;
