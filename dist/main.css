@@ -623,7 +623,7 @@ table caption {
 #program ul {
   list-style-type: square;
 }
-#program h2.date {
+#program .date {
   text-align: center;
 }
 #program table {
