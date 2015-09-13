@@ -630,10 +630,10 @@ table caption {
   font-size: 1.5em;
 }
 #program table tr:nth-of-type(odd) {
-  background-color: #f0f0f0;
+  background-color: lighter-strip;
 }
 #program table tr:nth-of-type(even) {
-  background-color: #e8e8e8;
+  background-color: deeper-strip;
 }
 #program table td {
   padding: 10px 10px;
@@ -645,6 +645,7 @@ table caption {
   display: block;
 }
 #program table td > span.title {
+  padding-top: 7px;
   font-weight: 600;
 }
 #program table td[colspan="2"] {
