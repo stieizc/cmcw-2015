@@ -644,12 +644,12 @@ table caption {
 #program table td > span {
   display: block;
 }
-#program table td > span.title {
+#program table td > span.title,
+#program table td > span.title-speaker {
   padding-top: 7px;
-  font-weight: 600;
 }
-#program table td.title {
-  padding: 10px;
+#program table td > span.title {
+  font-weight: 600;
 }
 #program table td[colspan="2"] {
   font-size: 1.1em;
